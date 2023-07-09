@@ -3,6 +3,49 @@
 <html>
 <head>
     <title>Search Terms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+        .empty-message {
+            color: #777;
+            font-style: italic;
+        }
+        .add-term-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-term-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Search Terms</h1>
@@ -10,9 +53,9 @@
         {% for term in terms %}
             <li><a href="{% url 'show_crawling_info' term.id %}">{{ term.term }}</a></li>
         {% empty %}
-            <li>No search terms found.</li>
+            <li class="empty-message">No search terms found.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'add_search_term' %}">Add New Search Term</a>
+    <a href="{% url 'add_search_term' %}" class="add-term-link">Add New Search Term</a>
 </body>
 </html>

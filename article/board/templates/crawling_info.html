@@ -3,17 +3,63 @@
 <html>
 <head>
     <title>Crawling Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+        .empty-message {
+            color: #777;
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Crawling Info: {{ term.term }}</h1>
-    <p>Crawling results:</p>
+    <h1>{{ term.term }} Naver Article</h1>
+    <p>10 recent articles.</p>
     <ul>
         {% for title, link in title_link %}
             <li><a href="{{ link }}">{{ title }}</a></li>
         {% empty %}
-            <li>No crawling information available.</li>
+            <li class="empty-message">No crawling information available.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'search_terms' %}">Back to Search Terms</a>
+    <a href="{% url 'search_terms' %}" class="back-link">Back to Search Terms</a>
 </body>
 </html>
