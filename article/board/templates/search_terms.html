@@ -1,0 +1,18 @@
+<!-- search_terms.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Terms</title>
+</head>
+<body>
+    <h1>Search Terms</h1>
+    <ul>
+        {% for term in terms %}
+            <li><a href="{% url 'show_crawling_info' term.id %}">{{ term.term }}</a></li>
+        {% empty %}
+            <li>No search terms found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_search_term' %}">Add New Search Term</a>
+</body>
+</html>

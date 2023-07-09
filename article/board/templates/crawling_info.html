@@ -1,0 +1,19 @@
+<!-- crawling_info.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crawling Info</title>
+</head>
+<body>
+    <h1>Crawling Info: {{ term.term }}</h1>
+    <p>Crawling results:</p>
+    <ul>
+        {% for title, link in title_link %}
+            <li><a href="{{ link }}">{{ title }}</a></li>
+        {% empty %}
+            <li>No crawling information available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'search_terms' %}">Back to Search Terms</a>
+</body>
+</html>

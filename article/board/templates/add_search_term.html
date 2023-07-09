@@ -1,0 +1,16 @@
+<!-- add_search_term.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Search Term</title>
+</head>
+<body>
+    <h1>Add Search Term</h1>
+    <form method="POST" action="{% url 'add_search_term' %}">
+        {% csrf_token %}
+        <label for="term">Search Term:</label>
+        <input type="text" id="term" name="term">
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
