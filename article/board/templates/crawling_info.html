@@ -53,13 +53,14 @@
 <body>
     <h1>{{ term.term }} Naver Article</h1>
     <p>10 recent articles.</p>
-    <ul>
-        {% for title, link in title_link %}
+    <ol>
+        {% for title, link, text in title_link %}
             <li><a href="{{ link }}">{{ title }}</a></li>
+            <blockquote>{{text}}</blockquote>
         {% empty %}
             <li class="empty-message">No crawling information available.</li>
         {% endfor %}
-    </ul>
+    </ol>
     <a href="{% url 'search_terms' %}" class="back-link">Back to Search Terms</a>
 </body>
 </html>

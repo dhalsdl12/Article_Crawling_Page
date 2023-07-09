@@ -20,7 +20,7 @@ def search_terms(request):
 def show_crawling_info(request, term_id):
     term = get_object_or_404(SearchTerm, pk=term_id)
 
-    title, link = start(term.term)
+    title, link, text = start(term.term)
     return render(request, 'crawling_info.html', 
                   {'term': term, 
-                   'title_link': zip(title, link)})
+                   'title_link': zip(title, link, text)})

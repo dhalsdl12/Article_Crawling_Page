@@ -6,17 +6,20 @@ from selenium.webdriver.common.by import By
 def pageCrawl(drive):
     article_title = []
     article_link = []
+    article_text = []
     article_list = drive.find_elements(By.XPATH, "//ul[@class=\"list_news\"]/li")
     for article in article_list:
         try:
             news_info = article.find_element(By.XPATH, "./div/div/a[@class=\"news_tit\"]")
+            news_text = article.find_element(By.XPATH, "./div/div/div[@class=\"news_dsc\"]/div/a")
             title = news_info.get_attribute('title')
             link = news_info.get_attribute('href')
             article_title.append(title)
             article_link.append(link)
+            article_text.append(news_text.text[:80])
         except:
             print("error")
-    return article_title, article_link
+    return article_title, article_link, article_text
 
 
 def start(title):
@@ -24,6 +27,7 @@ def start(title):
 
     article_title = []
     article_link = []
+    article_text = []
 
     chrome_driver = os.path.join('chromedriver')
     chrome_options = webdriver.ChromeOptions()
@@ -39,11 +43,8 @@ def start(title):
     ele.submit()
     drive.find_element(By.XPATH, '//*[@id="snb"]/div[1]/div/div[1]/a[2]').click()
 
-    article_title, article_link = pageCrawl(drive)
-    for i in range(len(article_title)):
-        print(article_title[i])
-        print(article_link[i])
+    article_title, article_link, article_text = pageCrawl(drive)
 
     drive.close()
 
-    return article_title, article_link
+    return article_title, article_link, article_text
