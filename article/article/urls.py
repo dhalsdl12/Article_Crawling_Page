@@ -1,5 +1,4 @@
 from django.contrib import admin
-from board.views import add_search_term, search_terms, show_crawling_info
 from django.urls import path, include
 
 

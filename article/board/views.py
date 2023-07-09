@@ -24,3 +24,12 @@ def show_crawling_info(request, term_id):
     return render(request, 'crawling_info.html', 
                   {'term': term, 
                    'title_link': zip(title, link, text)})
+
+def delete_search_term(request, term_id):
+    term = get_object_or_404(SearchTerm, pk=term_id)
+
+    if request.method == 'POST':
+        term.delete()
+        return redirect('search_terms')
+
+    return render(request, 'delete_search_term.html', {'term': term})
